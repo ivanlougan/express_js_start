@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const bookRouter = Router();
 const Book = require("./model");
-const { getAllBooks, addBook, updateGenre, deleteBook, deleteAllByGenre, deleteAll } = require("./controller");
+const { getAllBooks, addBook, updateGenre, deleteBook, deleteAllByGenre, deleteAll, dynamicUpdate } = require("./controller");
 const { deleteOne } = require("./model");
 
 // const { get } = require("mongoose");
@@ -12,6 +12,7 @@ bookRouter.put("/books/updatebookgenre", updateGenre);
 bookRouter.delete("/books/deletebook", deleteBook);
 bookRouter.delete("/books/deletebooks", deleteAllByGenre);
 bookRouter.delete("/books/deleteAllBooks", deleteAll);
+bookRouter.put("/books", dynamicUpdate);
 
 module.exports = bookRouter;
 

@@ -54,6 +54,26 @@ const updateGenre = async (request, response) => {
 
 };
 
+const dynamicUpdate = async (request, response) => {
+    // const filterObj = {songName: request.body.songName}
+    // const updateObj = {artist: request.body.newArtist}
+
+
+
+    const filterObj = { title: request.body.title}
+    const updateObj = { [request.body.updateKey]: request.body.updateValue}
+
+
+    const updatedBook = await Book.updateOne(filterObj, updateObj);
+
+    const successResponse = {
+        message: "success",
+        updatedBook: updatedBook,   
+    }
+
+    response.send(successResponse);
+};
+
 const deleteBook = async (request, response) => {
 
     const deleteBook = await Book.deleteOne({
@@ -99,7 +119,9 @@ module.exports = {
     getAllBooks,
     addBook,
     updateGenre,
+    dynamicUpdate,
     deleteBook,
     deleteAllByGenre,
     deleteAll,
+    
 };
