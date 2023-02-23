@@ -14,6 +14,26 @@ const getAllBooks = async (request, response) => {
     response.send(successResponse);
 }
 
+const getBookParam = async (req, res) => {
+
+    // res.send("you have requested to see book with id: " + req.params.id);
+
+    return res.json({
+        message: "yo yo what r u",
+        title: req.query.title,
+        author: req.query.author,
+        genre: req.query.genre
+    });
+
+    // json response when uri = http://localhost:5001/book?title=Adziabadzia&author=Roberto&genre=super
+    // {
+    //     "message": "yo yo what r u",
+    //     "title": "Adziabadzia",
+    //     "author": "Roberto",
+    //     "genre": "super"
+    //   }
+}
+
 const addBook = async (request, response) => {   
     
     
@@ -117,6 +137,7 @@ const deleteAll = async (req, res) => {
 
 module.exports = {
     getAllBooks,
+    getBookParam,
     addBook,
     updateGenre,
     dynamicUpdate,

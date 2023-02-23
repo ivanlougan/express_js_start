@@ -1,12 +1,16 @@
 const { Router } = require("express");
 const bookRouter = Router();
-const Book = require("./model");
-const { getAllBooks, addBook, updateGenre, deleteBook, deleteAllByGenre, deleteAll, dynamicUpdate } = require("./controller");
 const { deleteOne } = require("./model");
+const Book = require("./model");
+
+const { getAllBooks, addBook, updateGenre, 
+    deleteBook, deleteAllByGenre, deleteAll, 
+    dynamicUpdate, getBookParam } = require("./controller");
 
 // const { get } = require("mongoose");
 
 bookRouter.get("/books/getallbooks", getAllBooks);
+bookRouter.get("/book", getBookParam)
 bookRouter.post("/books/addbook", addBook);
 bookRouter.put("/books/updatebookgenre", updateGenre);
 bookRouter.delete("/books/deletebook", deleteBook);
